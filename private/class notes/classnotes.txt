@@ -8,3 +8,58 @@ without interfing each other every one make coding
 golbaly distributed.
 built community project
 askinng question like different features and ideas.
+github
+gitlab
+bootcampspot
+
+Git
+www.github.com
+repo new
+public
+initialize this repo with readme
+
+create
+
+basic commnad:
+git clone-copiy,connection betw local and remote repo.
+git add-tells track one/more files.
+
+commit-c
+push
+pull
+
+
+
+cd to which directory you want
+enter into the folder
+ls
+git clone copy the clone download link
+git add .
+git commit -m "message"
+git push
+
+
+how to ignore the file which include in push folder
+cd to directory
+touch .gitignore
+git status
+ls
+
+now in .gitignore file
+type private/
+save it
+now go to bash
+git add .
+git commit -m "changes"
+git push
+go ti github and look to repo
+
+
+CSS
+css wroks with selectors whc added to html as class and identifiers.
+
+if change done existing file :
+git bash
+git add.
+git commit -m ""
+git push
