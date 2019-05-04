@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<head>
+    <title>DateTime</title>
+    
+    
+</head>
+<body>
+    <script type = text/javascript>
+        /// current date and time program
+      /*  var today = new Date();
+        var day = today.getDay();
+        var dayList = ["sunday", "Monday", "tuesday", "wednesday", "Thursday", "Friday", "saturday"];
+        console.log("today is :"+dayList[day])
+        var hours = today.getHours();
+        var minutes = today.getMinutes();
+        var seconds = today.getSeconds();
+        var prepand = (hours >= 12) ? 'pm' :'am';
+        hours = (hours >= 12)? hours - 12 : hours;
+
+        if ((hours === 0)&&(prepand === 'pm')){
+            if((minutes === 0)&&(seconds === 0)){
+                hours = 12
+                prepand = 'Noon'
+
+
+            }
+            else{
+                hours=12
+                prepand = 'pm'
+            }
+        }
+        if ((hours === 0)&&(prepand === 'am')){
+            if((minutes === 0)&&(seconds === 0)){
+                hours = 12
+                prepand = 'Midnight'
+
+
+            }
+            else{
+                hours=12
+                prepand = 'am'
+            }
+        }
+
+        console.log ("current Time:"+hours+prepand+ ":" +minutes +":" +seconds);*/
+
+        // print current window on click event
+        /*function print_current_page(){
+            window.print();
+        }*/
+
+        ///current date in following formate mm-dd-yyyy, mm/dd/yyyy or dd-mm-yyyy, dd/mm/yyyy
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth();
+        var yyyy = today.getFullYear();
+        if (dd < 10){
+            dd = '0' + dd;
+
+        }
+        if (mm < 10){
+            mm = '0' + mm
+        }
+
+        today =mm+ '-' +dd+ '-' + yyyy;
+        console.log("Current date" +today)
+        today =mm+ '/' +dd+ '/' + yyyy;
+        console.log("Current date" +today)
+        today =dd+ '-' +mm+ '-' + yyyy;
+        console.log("Current date" +today)
+        today =dd+ '/' +mm+ '/' + yyyy;
+        console.log("Current date" +today)
+        </script>
+
+<p>Click the button to print the current page.</p>
+<button onclick="print_current_page()">Print this page</button>
+</body>
+</html>

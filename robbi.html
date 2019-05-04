@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Psychic Game</title>
+</head>
+
+<body>
+  <h1>The Psychic Game</h1>
+  <div>
+    <p id="directions-text">Press the key for your guess at what letter the computer is thinking of!</p>
+    <p id="userchoice-text"></p>
+    <p id="computerchoice-text"></p>
+    <p id="wins-text"></p>
+    <p id="losses-text"></p>
+    <p id="guessLeft-text"></p>
+    <p id="userGuess-text"></p>
+  </div>
+
+  <script type="text/javascript">
+
+  
+    alert("Good luck!")
+    // Creates an array that lists out all of the computer's options, aka, the alphabet
+    var computerChoices = ("abcdefghijklmnopqrstuvwxyz").split("");
+
+    // Randomly chooses a choice from the options array. This is the Computer's guess.
+    var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+    console.log(computerGuess);
+
+    // Creating  and setting variables to hold the number of wins, losses. They start at 0. # of guesses at 9.
+    // array to hold keys guessed
+    var wins = 0;
+    var losses = 0;
+    var guess = 9;
+    var keysGuessed = [];
+
+    // Create variables that hold references to the places in the HTML where we want to display game stats.
+    var directionsText = document.getElementById("directions-text");
+    var userChoiceText = document.getElementById("userchoice-text");
+    var computerChoiceText = document.getElementById("computerchoice-text");
+    var winsText = document.getElementById("wins-text");
+    var lossesText = document.getElementById("losses-text");
+    var guessText = document.getElementById("guessLeft-text");
+    var userGuessText = document.getElementById("userGuess-text");
+
+    document.onkeyup = function (event) {
+
+      // Determines which key was pressed.
+      var userGuess = event.key;
+
+      keysGuessed.push(userGuess); // add the user's guess to the array
+
+
+      if (userGuess === computerGuess) { // user wins, increment wins, reset other. Get new computer guess
+        console.log("you won");
+        wins++;
+        console.log(wins);
+        losses = 0;
+        guess = 9;
+        keysGuessed = [];
+      } else if ((userGuess !== computerGuess) && (guess > 0)) { // user guess is no match, but lives left
+        guess--;
+        console.log("elseif " + guess);
+      } else { // no match, out of lives
+        losses++;
+        guess = 9;
+        console.log("else " + guess);
+        var newGame = prompt("Sorry! Out of guesses. Play again?");
+        if (newGame != null) {
+          wins = 0;
+          losses = 0;
+          guess = 9;
+          console.log("startover " + guess);
+          keysGuessed = [];
+          startMe(); // starts game at the top
+        } else {
+          alert("Bye, bye! Thanks for playing!");
+        }
+
+      }
+      // Hide the directions
+      directionsText.textContent = "";
+
+      // Display the user and computer guesses, and wins/losses/remaining guesses.
+      userChoiceText.textContent = "You chose: " + userGuess;
+      computerChoiceText.textContent = "The computer chose: " + computerGuess; //GET RID OF THIS
+      winsText.textContent = "Wins: " + wins;
+      lossesText.textContent = "Losses: " + losses;
+      guessText.textContent = "Guesses left: " + guess; //reset when user guesses right or is wrong 9 times
+      userGuessText.textContent = "Your guesses so far: " + keysGuessed // document.write(keysGuessed);
+    } 
+     // end function start
+  </script>
+</body>
+
+</html>
