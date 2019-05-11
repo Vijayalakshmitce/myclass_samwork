@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Game of throne</title>
+    <link rel= "stylesheet" href ="game.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    </script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <header class = "bg-info display-4 text-sm-left ">GAME OF THRONE</header>
+    <div class="jumbotron-fluid imageback" style = "height:700px">
+    <div class="container ">
+     
+     
+        
+            <div class="charimage"></div>
+ 
+            
+
+        <div class=" defenderimage"></div>
+
+    
+</div>
+    </div>
+    <!-----jQuery----->
+    <script type="text/javascript">
+    var image = ["assets/image/char1.jpg",
+                 "assets/image/char2.jpg",
+                 "assets/image/char3.jpg",
+                 "assets/image/char4.jpg"
+                ];
+    for (var i=0; i<image.length; i++){
+        var imagechar = $("<img>");
+        imagechar.addClass ("image-char");
+        imagechar.attr("src" , image[i]);
+        
+        imagechar.attr("data-image",image[i])
+    
+        $(".charimage").append(imagechar);
+        
+
+    }
+    
+$(".image-char").on("click",function(){
+    
+    var defender = $("<img>")
+        defender . addClass ("image-char image-color")
+        
+        defender.attr("src" ,($(this).attr("data-image")));
+      
+        ("data-image").slice(1,1)
+        $(".defenderimage").append(defender);
+        $(this).empty()
+
+})
+</script>
+</body>
+</html>

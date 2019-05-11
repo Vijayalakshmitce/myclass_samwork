@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Crystal collector</title>
+  <!--java-->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+  </script>
+
+
+
+  <link rel="stylesheet" href="assets/css/crystal.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body>
+  <img class="image" src="assets/image/b1.jpg">
+  <div class="maincontent">
+    <img class="image1" src="assets/image/conim2.jpg">
+    <div class="header">Crystals Collectors</div>
+  </div>
+  <div class="instruction">
+    <p>You will be given a random number at the start of the game.</p>
+    <p>There are four crystals below.By clcikcing on a crystal you
+      will add a specific amount of points to your total score.</p>
+    <p>You win the game by matching your total score to random number,you lose the game if your
+      total score goes above the random number.</p>
+    <p>The value of each crystal is hidden from you until you clcik on it.
+      Ech time when the game starts, that game will change the values of each crystal</p>
+  </div>
+  <div class="randomscore"></div>
+  <div class="sidescore">
+    <div class="message">M:</div>
+    <div>win: <span id="win"></span></div>
+    <div>loss: <span id="loss"></span></div>
+  </div>
+  <div class="crystalimage"></div>
+  <div id="scoreheader">Your total score is:</div>
+  <div id="totalscore"></div>
+  <!-------jquery-->
+  <script type="text/javascript">
+    var win = 0;
+    var loss = 0;
+    var totalscore = 0;
+    var numberOptions = [30, 8, 9, 4]
+    var image = ["assets/image/green.jpg", "assets/image/red1.jpg", "assets/image/blue.jpg", "assets/image/diamond.jpg"]
+
+
+
+    // pick a random number between 0 and 120
+    var randomscoreGuess = Math.floor(Math.random() * 120)
+    
+    // show that number on screen
+    $(".randomscore").text(randomscoreGuess)
+    
+
+
+    console.log(numberOptions)
+
+    function numberchanger() {
+      
+      $(".crystalimage").html("");
+      
+      var numbersTemp = [];
+      for (let j = 0; j < numberOptions.length; j++) {
+        numbersTemp.push(numberOptions[j])
+      }
+
+      for (var i = 0; i < image.length; i++) {
+        var randomNumber = Math.floor(Math.random() * numbersTemp.length)
+
+        var imageCrystal = $("<img>");
+        imageCrystal.addClass("crystal-image");
+        imageCrystal.attr("src", image[i]);
+
+        imageCrystal.attr("data-crystalvalue", numbersTemp[randomNumber]);
+
+        numbersTemp.splice(randomNumber, 1)
+        $(".crystalimage").append(imageCrystal);
+
+      }
+
+      
+      $(".crystal-image").on("click", function () {
+        console.log("clicked")
+        var crystalValue = ($(this).attr("data-crystalvalue"));
+
+        crystalValue = parseInt(crystalValue);
+        totalscore += crystalValue;
+        $("#totalscore").text(totalscore)
+
+
+        // win condition
+        if (totalscore === randomscoreGuess) {
+          win++;
+
+          $("#win").text(win)
+
+
+
+          totalscore = 0;
+          $("#totalscore").text(totalscore)
+          randomscoreGuess = Math.floor(Math.random() * 120)
+          $(".randomscore").text(randomscoreGuess)
+          $(".message").text("you win")
+
+
+          var playAgain = confirm("do you want to play again")
+
+          if (playAgain) {
+            numberchanger();
+          }
+
+
+        }
+
+        // lose condition
+        else if (totalscore >= randomscoreGuess) {
+          loss++;
+
+
+          $("#loss").text(loss)
+
+          totalscore = 0;
+          $("#totalscore").text(totalscore)
+          randomscoreGuess = Math.floor(Math.random() * 120)
+          $(".randomscore").text(randomscoreGuess)
+          $(".message").text("you loss")
+
+        
+          var playAgain = confirm("do you want to play again")
+
+          if (playAgain) {
+            numberchanger();
+          }
+        }
+
+      });
+    };
+
+
+    numberchanger();
+   
+  </script>
+
+</body>
+
+</html>

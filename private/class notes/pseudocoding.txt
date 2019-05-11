@@ -1,0 +1,29 @@
+pseudocoding:
+1.an intial html was created with bootstrap
+2.a refernce to jquery was added.
+3.key buutons and image were assigned unique class name
+4.jquery was used to capture when the corresponding bttons were clicked.this was done throught the $() identifier with the class
+-name inside.
+5.code was created that changed the css of traget classes in response to the clcik events.
+
+$()-is called jquery function
+$()
+jQuery()-return objects inside the "" ans so many stuff
+
+whatever we using we using jQuery entire libary of function
+$("button").on("click").
+no need semicolon
+
+
+append -- just append the before the object
+append to= append and chain of the object
+scope and context:
+scope{}
+context "this"
+
+refernces the object where currently in (context ""this)
+|-------------------|
+|  1    |-----|     |
+|       |---2-|     |
+|                   |cannot call 2 box from 1 this is the context
+--------------------- 
