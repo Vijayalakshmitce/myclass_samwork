@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Favorite Movies</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+</head>
+
+<body>
+  <div class="container">
+    <p>Movie Search</p>
+    <input type="text" id="movie-input"><br>
+    <input id="find-movie" type="submit" value="Movie Search">
+    <div id="movie-view"></div>
+      </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script type="text/javascript">
+      $("#find-movie").on('click',function(){
+
+   
+       var movie = $("#movie-input").val();
+       var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy";
+      
+      $.ajax({
+          url:queryURL,
+          method:"GET"
+      }).then( function(response){
+          $("#movie-view").empty();
+        // $("#movie-view").text(JSON.stringify(response));
+        $("#movie-view").append("<br><button id='traget'>"+movie+"</button><br><br><br>");
+        $("#traget").on('click',function(){
+            $("#movie-view").text(response.Title);
+        });
+      });
+    });
+</script>
+      </body>
+      </html>

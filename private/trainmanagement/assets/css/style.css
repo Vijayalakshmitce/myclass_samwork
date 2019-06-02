@@ -1,0 +1,29 @@
+body{
+    background-image: url("../image/train1.jpg");
+    width:100%;
+    
+}
+#train-table th,
+    td {
+      display: inline-block;
+      width: 16.575%;
+    }
+
+.heading{
+  font-weight: bold;
+  color:red;
+}
+
+.jumbs{
+  color:brown;
+  background-image: url("../image/jums2.jpg");
+  
+  
+}
+
+tbody{
+  background-image: url("../image/trainblock1.jpg");
+}
+.trainblock2{
+  background-image: url("../image/trainblock1.jpg");
+}

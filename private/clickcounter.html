@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Click Me and go to firebase database and see counter will increase</h2>
+
+
+<input type="submit" value="clickMe" id="ClickCounter"></input>
+<label>Counter:</label>
+<div id="counter"></div>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+
+  <script>
+      var firebaseConfig = {
+    apiKey: "AIzaSyDQxuno9XAjo3dQG4lfIXDweDaxEmEiFMo",
+    authDomain: "clickcounter-9b2b9.firebaseapp.com",
+    databaseURL: "https://clickcounter-9b2b9.firebaseio.com",
+    projectId: "clickcounter-9b2b9",
+    storageBucket: "",
+    messagingSenderId: "707739273402",
+    appId: "1:707739273402:web:49d4f7fa8d77d1a2"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  var database = firebase.database();
+  var clickcounter =0;
+
+  $("#ClickCounter").on("click",function(){
+    clickcounter++;
+    console.log("clickcounter:"+clickcounter);
+    database.ref().set({
+        clickcount:clickcounter,
+    })
+  });
+
+  database.ref().on("value",function(reteriveValue){
+     var counter = reteriveValue.val().clickcount;
+     $("#counter").text(counter);
+  }, function(errorObject) {
+
+// In case of error this will print the error
+console.log("The read failed: " + errorObject.code);
+});
+  </script>
+</body>
+</html>

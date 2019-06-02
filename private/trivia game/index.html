@@ -1,0 +1,138 @@
+<!---creat head and title with Javascript link-->
+<!----body -> background image -> container(image)->-->
+<!---Heading-->
+<!---start button-->
+<!---div Time counter-->
+<!---div display Question on this div  once everything game done display win loss and back to game button in this div-->
+
+
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Trivia game</title>
+    <!-- CSS -->
+    <link rel="text/stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Script -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
+
+</head>
+
+<body>
+    
+    <div id="start" value="start">
+        <h2>Start</h2>
+    </div>
+    <div class="counter"></div>
+    <div class="question"></div>
+
+
+
+
+
+
+<script>
+    //declare counter variable
+    var counter = 30;
+    var showCounter;
+    var questionPackage = [{
+        question: "what is banana color",
+        choice: ["yellow", "red", "green"],
+        answer: 1,
+        image: "assets/image/banana.png"
+    },
+    {
+        question: "what is the color of sky",
+        choice: ["grey", "blue", "greyisblue"],
+        answer: 3,
+        image: "assets/image/sky.gif"
+    }
+
+    ];
+
+    var showTimeOut;
+    var showQuestion;
+    var currentQuestion = 0;
+
+    //
+    $('#start').on("click", Start);
+
+
+
+    $(function () {
+        $(".counter").hide();
+        $(".question").hide();
+        $('#start').click(function () {
+            $(this).hide();
+            $(".counter").show();
+            $(".question").show();
+        });
+    });
+
+
+    //start
+    function Start() {
+
+
+        showCounter = setInterval(counterDisplay, 1000 * 3)
+    
+        reset();
+    };
+    Start();
+    //counter display
+    function counterDisplay() {
+        counter--;
+
+        $(".counter").html(counter);
+        console.log(counter);
+
+        if (counter === 0) {
+            Stop();
+            counter = 30;
+        }
+    };
+    counterDisplay();
+
+
+    //stop
+    function Stop() {
+
+        setTimeout(showCounter, 1000*3);
+    }
+    Stop();
+    //questiondisplay
+    function questionDisplay() {
+
+        $(".question").text(questionPackage[currentQuestion].question);
+
+        console.log("current" + currentQuestion)
+
+    }
+    questionDisplay();
+    
+    /// nextQuestion
+
+    function nextQuestion() {
+        currentQuestion++;
+      
+            setTimeout(questionDisplay,1000*30);
+        
+        
+    }
+    nextQuestion();
+   
+    /// function reset()
+     function reset() {
+        counter = 30;
+
+
+    }
+    reset();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+body{
+
+    background-image: url("../image/back1.jpg");
+
+
+
+position: relative;
+box-sizing: border-box;
+}
+
+.container{
+    background-image: url("../image/back3.jpg");
+     widows: 500px;
+    height:500px;
+    margin: 30px;
+    padding:5px;
+    color:white;
+     text-align: center;
+}
+#choice1{
+    
+    background-color:grey;
+}

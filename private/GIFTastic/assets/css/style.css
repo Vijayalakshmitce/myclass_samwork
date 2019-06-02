@@ -1,0 +1,20 @@
+body{
+    background-image: url("../image/back3.jpg");
+    width:100%;
+    
+}
+.container-fluid{
+    color:white;
+}
+.resultImg{
+    width:200px;
+    height: 200px;
+}
+.opcity{
+    background-image: url("../image/back1.jpg");
+    color: white;
+    font-weight:bold;
+    
+    position: relative;
+}
+

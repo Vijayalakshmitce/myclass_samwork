@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+<h2>Counter:<span id="clickCounter"></span></h2>
+<input type="submit" id="sumbitbtn" value="submit"></input>
+<input type="submit" id="resetbtn"  value="Reset"></input>
+
+
+
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+<script>
+  var firebaseConfig = {
+    apiKey: "AIzaSyB8QcMcfPqq44Ae8CK9ftA_ZcfHKtexgJI",
+    authDomain: "clickreset-2f901.firebaseapp.com",
+    databaseURL: "https://clickreset-2f901.firebaseio.com",
+    projectId: "clickreset-2f901",
+    storageBucket: "clickreset-2f901.appspot.com",
+    messagingSenderId: "698257668184",
+    appId: "1:698257668184:web:1fe8d74023a58ad9"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  var initialCount =5;
+  var clickCounter = initialCount;
+
+  var database = firebase.database();
+
+  $("#sumbitbtn").on("click",function(){
+    clickCounter--;
+    console.log("cd:"+clickCounter);
+    if(clickCounter===0){
+        alert("hi you reach your limit bye ...");
+        clickCounter=initialCount;
+    }
+database.ref().set({
+    counter:clickCounter
+})
+
+  });
+
+  $("#resetbtn").on("click",function(){
+    clickCounter = initialCount;
+    console.log("Reset:"+clickCounter);
+    database.ref().set({
+        counter:clickCounter
+    })
+    // $("#clickCounter").text(counter);
+  });
+
+  database.ref().on("value",function(reteriveValue){
+      var counterDataB = reteriveValue.val().counter;
+
+      $("#clickCounter").text(counterDataB);
+  }, function(errorObject) {
+
+// In case of error this will print the error
+console.log("The read failed: " + errorObject.code);
+});
+
+
+
+</script>      
+
+</body>
+</html>

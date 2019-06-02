@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+<label>UserInput:</label>
+<input type="text" id="inputBox"></input>
+<input type="submit" id="submitbtn"></input>
+
+<div id="resultDisplay"></div>
+<script>
+    
+        $("#submitbtn").on("click",function(){
+            console.log("i am clicked");
+            var userDOList = $("#inputBox").val().trim();
+            
+            $("#resultDisplay").append(userDOList);
+            var userCheckBox = $("<button>");
+            userCheckBox.addClass("checkbox");
+            userCheckBox.text("✓");
+            $("#resultDisplay").prepend(userCheckBox)
+        });
+    </script>
+</body>
+</html>
