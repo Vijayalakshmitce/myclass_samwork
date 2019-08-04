@@ -1,0 +1,111 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+h1 {
+    font-weight: 900 !important;
+    color: white;
+}
+
+h2 {
+    font-size: 1.4em;
+}
+
+h3 {
+    font-weight: 300 !important;
+    font-size: 1.2em;
+}
+
+h4 {
+    font-size: 1.4em;
+    font-weight: 300;
+}
+
+.card-header {
+    font-weight: 500;
+}
+
+
+#firstp {
+    padding-top: 0px !important;
+}
+
+.btn {
+    font-weight: 300 !important;
+    margin: 6px !important;
+    color: white !important;
+}
+
+.btn-lg {
+    width: 240px;
+    color: white;
+}
+
+.jumbotron {
+    background-color: #269e68 !important;
+    color: #ffffff;
+    min-height: 100px;
+    max-height: 200px;
+    padding-top: 42px;
+    padding-bottom: 42px;
+}
+
+.display-4 {
+    line-height: 94%;
+    margin-bottom: 14px;
+    font-size: 3.3em;
+}
+
+.lead {
+    padding-top: 0;
+    line-height: 120%;
+}
+
+.form-control:focus {
+    border-color: #b1b1b1;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+#container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.card {
+    width: 80%;
+}
+
+@media screen and (min-width: 100px) {
+    #piechart {
+        width: 300px;
+        height: 350px;
+        margin: auto;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    #piechart {
+        width: 300px;
+        height: 350px;
+        margin: auto;
+    }
+}
+
+@media (min-width: 1200px) {
+    #piechart {
+        /* display: grid; */
+        /* grid-template-columns: 1fr;
+        grid-gap: 20px; */
+        width: 820px;
+        height: 500px;
+        margin: auto;
+    }
+}
+
+a,
+a.greenlink:hover,
+a.greenlink:visited {
+    color: #269e68 !important;
+}
