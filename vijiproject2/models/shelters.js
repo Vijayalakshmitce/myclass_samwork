@@ -22,5 +22,13 @@ module.exports = function(sequelize,DataTypes){
             allowNull: false
         }
     });
+     
+    Shelter.associate  = function(models){
+        Shelter.hasMany(models.Guest,{
+        onDelete: "cascade",
+        foreignKey:"shelter_id"
+        });
+        }
+
     return Shelter;
 };

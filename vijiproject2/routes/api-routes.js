@@ -5,7 +5,7 @@ module.exports = function (app) {
   app.get("/api/guest", function (req, res) {
 
     shelterGuestDb.Guest.findAll({}).then(function (results) {
-
+      console.log(JSON.stringify(results))
       res.json(results);
     });
   });
@@ -24,15 +24,17 @@ module.exports = function (app) {
       guest_Name: req.body.guest_Name,
       age: req.body.age,
       gender: req.body.gender,
+      shelter_id: req.body.shelter_id,
       shelter_Name: req.body.shelter_Name,
-      entry_Date: req.body.entry_Date
+      entry_Date: req.body.entry_Date,
+      guest_Flag: req.body.guest_Flag
     }).then(function (results) {
       res.json({
-        id: result.insertId
+        id: results.insertId
       });
     });
   });
-
+//guest entry end closure here
 
   app.post("/api/shelter",function(req,res){
     shelterGuestDb.Shelter.create({
@@ -48,6 +50,52 @@ module.exports = function (app) {
       });
     })
   })
+  ///adding shelter end closure  here
+
+  app.get("/api/joins/:shelter_id/:id",function(req,res){
+   
+    shelterGuestDb.Shelter.findAll({
+      where:{
+        id : req.params.id
+      }
+    },{
+      include : [{
+        model : shelterGuestDb.Guest,
+        where : {
+          shelter_id : req.params.shelter_id
+        }
+      }]
+    }).then(function(results){
+      res.json(results);
+      console.log("Api routes..");
+      console.log(JSON.stringify(results));
+    })
+
+  });
+  ///end closure here
+   app.put("/api/updateShelter/:id",function(req,res){
+    
+    shelterGuestDb.Shelter.update({
+      capacity : req.body.capacity
+    },{
+      where:{
+        id : req.params.id
+      }
+    }).then(function(result){
+      res.json(result)
+      console.log(result);
+    })
+   });
+  //put end closure here
+  app.get("/api/googleChrat",function(req,res){
+      shelterGuestDb.Shelter.findAll({
+        attributes: ['Shelter_name','capacity']
+      }).then(function(result){
+        res.json(result);
+        console.log(JSON.stringify(result));
+      })
+  });
+  //google chart api end closure here
 };
 //module export end closure here
 

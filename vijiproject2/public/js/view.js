@@ -19,62 +19,59 @@ $.get("/api/shelters", function (data) {
     };
   };
 };
-var data = [{
-  name: "WYCA Central Carolinas",
-  capacity: 40,
-  opensAt: '17:00',
-  female: true,
-  male: false,
-},
-{
-  name: "HHRO North Carolinas",
-  capacity: 40,
-  opensAt: '17:00',
-  female: false,
-  male: true,
-},
-{
-  name: "Urban Ministry Center",
-  capacity: 40,
-  opensAt: '17:00',
-  female: true,
-  male: true,
-},
-{
-  name: "Uptown shelter",
-  capacity: 40,
-  opensAt: '17:00',
-  female: true,
-  male: true,
-}];
 
-$('#female').on('click', function () {
-var filteredArray = data.filter(each => each.female === true)
-console.log(filteredArray);
-$("#shelters").empty()
-$("#shelters").append(`<h2>Female only shelters</h2>`)
-displayShelters(filteredArray)
-})
 
-$('#male').on('click', function () {
-var filteredArray = data.filter(each => each.male === true)
-console.log(filteredArray);
-$("#shelters").empty()
-$("#shelters").append(`<h2>Male only shelters</h2>`)
-displayShelters(filteredArray)
-})
 
-$('#both').on('click', function () {
-var filteredArray = data.filter(each => each.female === true && each.male === true)
-console.log(filteredArray);
-$("#shelters").empty()
-$("#shelters").append(`<h2>Shelters for both genders</h2>`)
-displayShelters(filteredArray)
-})
+window.onload = function() {
+  google.charts.load('current', {'packages':['corechart']});
+  
+  var options = {
+    title: 'Shelter Availability'
+  };
 
-function displayShelters(array) {
-for (let i = 0; i < array.length; i++) {
-  var newShelter = $(`<div>${array[i].name}</div>`)
-  $("#shelters").append(newShelter)
-}
+  google.charts.setOnLoadCallback(function() {
+    getChartData(function(result) {
+      renderChart(result, options);
+      
+      window.onresize = function() {
+        renderChart(result, options);
+      };
+    });
+  });
 };
+
+
+
+// --- UTIL FUNCTIONS ---
+function getChartData(callback) {
+  // makes the API call
+  $.get("/api/googleChrat",function(result){
+    console.log(result);
+    callback(result);
+  });
+}
+
+function renderChart(data, options) {
+  
+  // create a bar chart object
+  // render chart
+
+  var dTable = new google.visualization.DataTable();
+
+  // add colums to data table
+  dTable.addColumn('string','Shelter_name'); 
+  dTable.addColumn('number','capacity'); 
+
+  // add each row of data using a for loop
+  for(i=0; i < data.length;i++){
+    var currentObj = data[i];
+    dTable.addRow([currentObj.Shelter_name,currentObj.capacity]);
+  }
+
+  var chart = new google.visualization.BarChart(document.getElementById('piechart'));
+
+  chart.draw(dTable, options);
+
+}
+
+
