@@ -1,4 +1,8 @@
 // Make an AJAX get request to our api
+$.get("/post/dataBulk",function(data){
+console.log("bulk insert");
+})
+///
 $.get("/api/shelters", function (data) {
   console.log(data);
   // Call our renderShelters function to add our books to the page
