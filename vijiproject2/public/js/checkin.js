@@ -70,7 +70,7 @@ $.get("/api/joins/"+shelter_id+"/"+id,function(result){
 });
   
 });
-///////
+///////update////
  
   $("#name").val("");
   $("#age").val("");

@@ -5,34 +5,7 @@
   <meta charset="UTF-8">
   <title>Charlotte Shelters</title>
 
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <script type="text/javascript">
-    google.charts.load('current', {
-      'packages': ['corechart']
-    });
-    google.charts.setOnLoadCallback(drawChart);
-
-    function drawChart() {
-      var data = google.visualization.arrayToDataTable([
-        ['Shelter', 'Available Beds'],
-        ['YWCA', 40],
-        ['Urban Ministry', 30],
-        ['Uptown Shelter', 20],
-        ['MFC', 10],
-        ['Hope Haven', 7]
-      ]);
-
-      var options = {
-        title: 'Shelter Availability'
-      };
-
-      var chart = new google.visualization.BarChart(document.getElementById('piechart'));
-
-      chart.draw(data, options);
-    }
-
-    window.onresize = drawChart;
-  </script>
+  
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet">
@@ -86,16 +59,31 @@
                 <label for="">Name</label>
                 <input type="text" class="form-control" id="name" placeholder="">
               </div>
-
               <div class="form-group">
-                <label for="">Amount</label>
-                <input type="text" class="form-control" id="amount" placeholder="">
+                  <label for="">Shelter Name</label><br>
+            
+                  <div  id="dropdown"></div>  
               </div>
 
               <div class="form-group">
-                <label for="">Shelter</label>
-                <input type="number" class="form-control" id="shelteramount" placeholder="">
-              </div>
+                  <label for="">UserName</label>
+                  <input type="text" class="form-control" id="userName" placeholder="">
+                </div>
+              
+                <div class="form-group">
+                    <label for="">Password</label>
+                    <input type="text" class="form-control" id="passWord" placeholder="">
+                  </div>
+                
+                <div class="form-group">
+                      <label for="">Card Number</label>
+                      <input type="number" class="form-control" id="cardNumber" placeholder="">
+                    </div>
+
+                <div class="form-group">
+                        <label for="">Amount</label>
+                        <input type="number" class="form-control" id="donateAmount" placeholder="">
+                      </div>
             </form>
             <br>
             <div class="text-right">
