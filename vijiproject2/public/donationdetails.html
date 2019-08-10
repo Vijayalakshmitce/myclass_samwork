@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Charlotte Shelters</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet">
+  <!-- Bootstrap CSS & JS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+        table, tr,th, td {
+          border: 1px solid black;
+        }
+        </style>
+</head>
+
+<body>
+  <img class="img-fluid" src="/images/kindness_tall.jpg" alt="homeless man">
+  <div class="jumbotron jumbotron-fluid text-center mb-5">
+
+    <div class="container">
+
+      <h1>Charlotte Shelters</h1>
+      <h4>Find an available homeless shelter today.</h4>
+    </div>
+  </div>
+
+  <div class="container mb-5 text-center">
+    <a href="/" class="btn btn-secondary btn-lg">
+      <span class="fa fa-hotel"></span> Shelter List</a>
+    <a href="/checkin" class="btn btn-secondary btn-lg">
+      <span class="fa fa-check-square-o"></span> Check In</a>
+    <a href="/donate" class="btn btn-secondary btn-lg">
+      <span class="fa fa-money"></span> Donate</a>
+      <a href="/admin" class="btn btn-secondary btn-lg">
+        <span class="fa fa-money"></span> Admin</a>
+        <a href="/donationDetails" class="btn btn-secondary btn-lg">
+            <span class="fa fa-money"></span> donation details</a>
+
+  </div>
+
+  <div class="container mb-5">
+    <div class="row">
+      <div class="col-lg-12">
+
+        <div class="card mx-auto">
+          <div class="card-header">
+            Donation details
+          </div>
+
+          <div class="card-body">
+           <div id = "tableDisplay">
+
+
+           </div>
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Custom Script -->
+  <script src="js/donationDetails.js" type="text/javascript"></script>
+</body>
+
+</html>
